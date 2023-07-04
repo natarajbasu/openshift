@@ -1,0 +1,199 @@
+﻿kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/build-config.name: mysql
+    openshift.io/build.number: '1'
+    openshift.io/build.pod-name: mysql-1-build
+  resourceVersion: '153369094'
+  name: mysql-1
+  uid: 52eaa673-f733-4eba-a267-0721c94ce628
+  creationTimestamp: '2023-05-05T13:34:28Z'
+  generation: 2
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2023-05-05T13:34:28Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/build-config.name': {}
+            'f:openshift.io/build.number': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:buildconfig': {}
+            'f:openshift.io/build-config.name': {}
+            'f:openshift.io/build.start-policy': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"6cccaf5e-809b-454c-9142-9741571e3270"}': {}
+        'f:spec':
+          'f:output':
+            'f:to': {}
+          'f:serviceAccount': {}
+          'f:source':
+            'f:contextDir': {}
+            'f:git':
+              .: {}
+              'f:uri': {}
+            'f:type': {}
+          'f:strategy':
+            'f:sourceStrategy':
+              .: {}
+              'f:from': {}
+              'f:pullSecret': {}
+            'f:type': {}
+          'f:triggeredBy': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"New"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:config': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2023-05-05T13:38:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:openshift.io/build.pod-name': {}
+        'f:spec':
+          'f:output':
+            'f:pushSecret': {}
+        'f:status':
+          'f:completionTimestamp': {}
+          'f:duration': {}
+          'f:outputDockerImageReference': {}
+          'f:phase': {}
+          'f:startTimestamp': {}
+  namespace: hackathon2023-prometheus
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      kind: BuildConfig
+      name: mysql
+      uid: 6cccaf5e-809b-454c-9142-9741571e3270
+      controller: true
+  labels:
+    app: mysql
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/instance: mysql
+    buildconfig: mysql
+    openshift.io/build-config.name: mysql
+    openshift.io/build.start-policy: Serial
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'mysql:latest'
+    pushSecret:
+      name: builder-dockercfg-52p45
+  resources: {}
+  triggeredBy:
+    - message: Image change
+      imageChangeBuild:
+        imageID: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/mysql@sha256:daa6533d9385e8342470903788dbacdb239aae362275cc64029a06c6bc6c30b6
+        fromRef:
+          kind: ImageStreamTag
+          namespace: openshift
+          name: 'mysql:8.0'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/mysql@sha256:daa6533d9385e8342470903788dbacdb239aae362275cc64029a06c6bc6c30b6
+      pullSecret:
+        name: builder-dockercfg-52p45
+  postCommit: {}
+  serviceAccount: builder
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/sclorg/mysql-container.git'
+    contextDir: examples/extend-image
+  revision:
+    type: Git
+    git:
+      commit: 64e9077b2c5a906be9572360daaafd70ed669340
+      author:
+        name: Petr Hracek
+        email: phracek@redhat.com
+      committer:
+        name: GitHub
+        email: noreply@github.com
+      message: 'Merge pull request #339 from sclorg/fix_ocp3_tests'
+status:
+  output:
+    to:
+      imageDigest: 'sha256:5da2890ce2438238db41f1d5e728188300736aad157e5c370b62d93bab61b7da'
+  config:
+    kind: BuildConfig
+    namespace: hackathon2023-prometheus
+    name: mysql
+  outputDockerImageReference: >-
+    image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/mysql:latest
+  duration: 254000000000
+  startTimestamp: '2023-05-05T13:34:28Z'
+  stages:
+    - name: FetchInputs
+      startTime: '2023-05-05T13:34:32Z'
+      durationMilliseconds: 2013
+      steps:
+        - name: FetchGitSource
+          startTime: '2023-05-05T13:34:32Z'
+          durationMilliseconds: 2013
+    - name: PullImages
+      startTime: '2023-05-05T13:34:39Z'
+      durationMilliseconds: 209853
+      steps:
+        - name: PullBaseImage
+          startTime: '2023-05-05T13:34:39Z'
+          durationMilliseconds: 209853
+    - name: Build
+      startTime: '2023-05-05T13:38:09Z'
+      durationMilliseconds: 26924
+      steps:
+        - name: DockerBuild
+          startTime: '2023-05-05T13:38:09Z'
+          durationMilliseconds: 26924
+    - name: PushImage
+      startTime: '2023-05-05T13:38:36Z'
+      durationMilliseconds: 1304
+      steps:
+        - name: PushImage
+          startTime: '2023-05-05T13:38:36Z'
+          durationMilliseconds: 1304
+  conditions:
+    - type: New
+      status: 'False'
+      lastUpdateTime: '2023-05-05T13:34:28Z'
+      lastTransitionTime: '2023-05-05T13:34:28Z'
+    - type: Pending
+      status: 'False'
+      lastUpdateTime: '2023-05-05T13:34:32Z'
+      lastTransitionTime: '2023-05-05T13:34:32Z'
+    - type: Running
+      status: 'False'
+      lastUpdateTime: '2023-05-05T13:38:42Z'
+      lastTransitionTime: '2023-05-05T13:38:42Z'
+    - type: Complete
+      status: 'True'
+      lastUpdateTime: '2023-05-05T13:38:42Z'
+      lastTransitionTime: '2023-05-05T13:38:42Z'
+  completionTimestamp: '2023-05-05T13:38:42Z'
+  phase: Complete

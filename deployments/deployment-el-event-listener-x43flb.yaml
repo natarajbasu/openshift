@@ -1,0 +1,326 @@
+﻿kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    app.openshift.io/connects-to: '[{"apiVersion":"apps/v1","kind":"Deployment","name":"travel-ui"}]'
+    deployment.kubernetes.io/revision: '1'
+  resourceVersion: '172125568'
+  name: el-event-listener-x43flb
+  uid: 08e333ba-0f48-4ffe-b2d3-c34f76ffc110
+  creationTimestamp: '2023-05-19T09:47:00Z'
+  generation: 22
+  managedFields:
+    - manager: openshift-pipelines-triggers-controller
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-05-19T09:47:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/managed-by': {}
+            'f:eventlistener': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"71574f85-cbf6-4056-bf85-0e46db45ea62"}': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app.kubernetes.io/managed-by': {}
+                'f:app.kubernetes.io/part-of': {}
+                'f:eventlistener': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"event-listener"}':
+                  'f:image': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources': {}
+                  'f:args': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:env':
+                    'k:{"name":"EL_EVENT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"METRICS_PROMETHEUS_PORT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"NAMESPACE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"K_SINK_TIMEOUT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    .: {}
+                    'k:{"name":"NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SYSTEM_NAMESPACE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:fieldRef': {}
+                    'k:{"name":"K_METRICS_CONFIG"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"K_TRACING_CONFIG"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"K_LOGGING_CONFIG"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                    'k:{"containerPort":9000,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:serviceAccount': {}
+              'f:serviceAccountName': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-05-29T08:46:23Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:app.openshift.io/connects-to': {}
+          'f:labels':
+            'f:app.kubernetes.io/part-of': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-06-09T15:04:54Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+      subresource: status
+  namespace: hackathon2023-prometheus
+  ownerReferences:
+    - apiVersion: triggers.tekton.dev/v1beta1
+      kind: EventListener
+      name: event-listener-x43flb
+      uid: 71574f85-cbf6-4056-bf85-0e46db45ea62
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    app.kubernetes.io/managed-by: EventListener
+    app.kubernetes.io/part-of: travel-recommendation
+    eventlistener: event-listener-x43flb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/managed-by: EventListener
+      app.kubernetes.io/part-of: Triggers
+      eventlistener: event-listener-x43flb
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/managed-by: EventListener
+        app.kubernetes.io/part-of: Triggers
+        eventlistener: event-listener-x43flb
+    spec:
+      containers:
+        - resources: {}
+          readinessProbe:
+            httpGet:
+              path: /live
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 1
+          terminationMessagePath: /dev/termination-log
+          name: event-listener
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 1
+          env:
+            - name: K_LOGGING_CONFIG
+              value: >-
+                {"zap-logger-config":"{\n  \"level\": \"info\",\n 
+                \"development\": false,\n  \"disableStacktrace\": true,\n 
+                \"sampling\": {\n    \"initial\": 100,\n    \"thereafter\":
+                100\n  },\n  \"outputPaths\": [\"stdout\"],\n 
+                \"errorOutputPaths\": [\"stderr\"],\n  \"encoding\":
+                \"json\",\n  \"encoderConfig\": {\n    \"timeKey\":
+                \"timestamp\",\n    \"levelKey\": \"severity\",\n   
+                \"nameKey\": \"logger\",\n    \"callerKey\": \"caller\",\n   
+                \"messageKey\": \"message\",\n    \"stacktraceKey\":
+                \"stacktrace\",\n    \"lineEnding\": \"\",\n   
+                \"levelEncoder\": \"\",\n    \"timeEncoder\": \"iso8601\",\n   
+                \"durationEncoder\": \"\",\n    \"callerEncoder\": \"\"\n 
+                }\n}\n"}
+            - name: K_METRICS_CONFIG
+              value: >-
+                {"Domain":"tekton.dev/triggers","Component":"eventlistener","PrometheusPort":0,"PrometheusHost":"","ConfigMap":{}}
+            - name: K_TRACING_CONFIG
+              value: '{"backend":"","debug":"false","sample-rate":"0"}'
+            - name: NAMESPACE
+              value: hackathon2023-prometheus
+            - name: NAME
+              value: event-listener-x43flb
+            - name: EL_EVENT
+              value: enable
+            - name: K_SINK_TIMEOUT
+              value: '30'
+            - name: SYSTEM_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: METRICS_PROMETHEUS_PORT
+              value: '9000'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 9000
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          terminationMessagePolicy: File
+          image: >-
+            registry.redhat.io/openshift-pipelines/pipelines-triggers-eventlistenersink-rhel8@sha256:a47dc1fb49ff36f6411d928108640cce7f830e4aa00a039e22ac1a8d4d2cd690
+          args:
+            - '--el-name=event-listener-x43flb'
+            - '--el-namespace=hackathon2023-prometheus'
+            - '--port=8080'
+            - '--readtimeout=5'
+            - '--writetimeout=40'
+            - '--idletimeout=120'
+            - '--timeouthandler=30'
+            - '--httpclient-readtimeout=30'
+            - '--httpclient-keep-alive=30'
+            - '--httpclient-tlshandshaketimeout=10'
+            - '--httpclient-responseheadertimeout=10'
+            - '--httpclient-expectcontinuetimeout=1'
+            - '--is-multi-ns=false'
+            - '--payload-validation=true'
+            - '--cloudevent-uri='
+            - '--tls-cert='
+            - '--tls-key='
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: pipeline
+      serviceAccount: pipeline
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 22
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2023-05-19T09:48:45Z'
+      lastTransitionTime: '2023-05-19T09:47:00Z'
+      reason: NewReplicaSetAvailable
+      message: >-
+        ReplicaSet "el-event-listener-x43flb-7965747955" has successfully
+        progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2023-06-09T15:04:54Z'
+      lastTransitionTime: '2023-06-09T15:04:54Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.

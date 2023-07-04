@@ -1,0 +1,102 @@
+﻿kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: compute-resources
+  namespace: hackathon2023-prometheus
+  uid: 16bb6741-7888-4f47-a0ba-c138a3df5b2b
+  resourceVersion: '172180369'
+  creationTimestamp: '2023-04-13T08:09:22Z'
+  managedFields:
+    - manager: cluster-policy-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-13T08:09:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:hard':
+            .: {}
+            'f:limits.ephemeral-storage': {}
+      subresource: status
+    - manager: kubectl-create
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-13T08:09:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:hard':
+            .: {}
+            'f:limits.ephemeral-storage': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-22T09:12:02Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:hard':
+            'f:limits.cpu': {}
+            'f:limits.memory': {}
+            'f:requests.cpu': {}
+            'f:requests.ephemeral-storage': {}
+            'f:requests.memory': {}
+    - manager: kubectl-edit
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T09:04:04Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:hard':
+            'f:pods': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-06-09T15:52:07Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:hard':
+            'f:limits.cpu': {}
+            'f:limits.memory': {}
+            'f:pods': {}
+            'f:requests.cpu': {}
+            'f:requests.ephemeral-storage': {}
+            'f:requests.memory': {}
+          'f:used':
+            .: {}
+            'f:limits.cpu': {}
+            'f:limits.ephemeral-storage': {}
+            'f:limits.memory': {}
+            'f:pods': {}
+            'f:requests.cpu': {}
+            'f:requests.ephemeral-storage': {}
+            'f:requests.memory': {}
+      subresource: status
+spec:
+  hard:
+    limits.cpu: '4'
+    limits.ephemeral-storage: 4Gi
+    limits.memory: 4Gi
+    pods: '6'
+    requests.cpu: '4'
+    requests.ephemeral-storage: 4Gi
+    requests.memory: 4Gi
+status:
+  hard:
+    limits.cpu: '4'
+    limits.ephemeral-storage: 4Gi
+    limits.memory: 4Gi
+    pods: '6'
+    requests.cpu: '4'
+    requests.ephemeral-storage: 4Gi
+    requests.memory: 4Gi
+  used:
+    limits.cpu: '2'
+    limits.ephemeral-storage: '0'
+    limits.memory: 2000Mi
+    pods: '4'
+    requests.cpu: 800m
+    requests.ephemeral-storage: '0'
+    requests.memory: 800Mi

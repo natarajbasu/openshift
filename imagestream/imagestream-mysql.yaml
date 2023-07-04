@@ -1,0 +1,65 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+    openshift.io/image.dockerRepositoryCheck: '2023-05-05T18:02:09Z'
+  resourceVersion: '111392698'
+  name: mysql
+  uid: e262e2b6-fc93-463e-a34e-5b9e84138453
+  creationTimestamp: '2023-05-05T13:34:27Z'
+  generation: 3
+  managedFields:
+    - manager: oc
+      operation: Update
+      apiVersion: image.openshift.io/v1
+      time: '2023-05-05T13:34:27Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+  namespace: hackathon2023-prometheus
+  labels:
+    app: mysql
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/instance: mysql
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: '5.6'
+      annotations: null
+      from:
+        kind: DockerImage
+        name: 'mysql:5.6'
+      generation: 3
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/mysql
+  tags:
+    - tag: '5.6'
+      items:
+        - created: '2023-05-05T18:02:09Z'
+          dockerImageReference: >-
+            mysql@sha256:897086d07d1efa876224b147397ea8d3147e61dd84dce963aace1d5e9dc2802d
+          image: >-
+            sha256:897086d07d1efa876224b147397ea8d3147e61dd84dce963aace1d5e9dc2802d
+          generation: 3
+    - tag: latest
+      items:
+        - created: '2023-05-05T13:38:37Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/mysql@sha256:5da2890ce2438238db41f1d5e728188300736aad157e5c370b62d93bab61b7da
+          image: >-
+            sha256:5da2890ce2438238db41f1d5e728188300736aad157e5c370b62d93bab61b7da
+          generation: 1

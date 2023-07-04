@@ -1,0 +1,27 @@
+﻿apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  creationTimestamp: '2023-06-08T14:52:38Z'
+  generation: 1
+  managedFields:
+    - apiVersion: tekton.dev/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          .: {}
+          'f:steps': {}
+      manager: Mozilla
+      operation: Update
+      time: '2023-06-08T14:52:38Z'
+  name: npm-test
+  namespace: hackathon2023-prometheus
+  resourceVersion: '170399269'
+  uid: aaeefe08-8cfe-4d10-b8ff-a6fae4379ac6
+spec:
+  steps:
+    - command:
+        - /bin/bash
+        - npm test
+      image: registry.redhat.io/ubi7/ubi-minimal
+      name: ''
+      resources: {}

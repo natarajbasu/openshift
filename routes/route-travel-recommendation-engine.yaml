@@ -1,0 +1,87 @@
+﻿kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: travel-recommendation-engine
+  namespace: hackathon2023-prometheus
+  uid: 964add1d-2d1e-4fdd-bb83-19309f94477d
+  resourceVersion: '116032744'
+  creationTimestamp: '2023-05-08T09:29:55Z'
+  labels:
+    app: travel-recommendation-engine
+    app.kubernetes.io/component: travel-recommendation-engine
+    app.kubernetes.io/instance: travel-recommendation-engine
+    app.kubernetes.io/name: travel-recommendation-engine
+    app.kubernetes.io/part-of: travel-recommendation
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.9-ubi8
+    our-travel-recommendation-app: ''
+  annotations:
+    app.openshift.io/connects-to: '[{"apiVersion":"apps/v1","kind":"Deployment","name":"mysql"}]'
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2023-05-08T09:29:55Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+      subresource: status
+    - manager: Mozilla
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2023-05-08T10:41:48Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:app.openshift.io/connects-to': {}
+          'f:labels':
+            'f:app.openshift.io/runtime': {}
+            'f:our-travel-recommendation-app': {}
+            'f:app': {}
+            'f:app.kubernetes.io/name': {}
+            .: {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime-version': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/component': {}
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:tls':
+            .: {}
+            'f:insecureEdgeTerminationPolicy': {}
+            'f:termination': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+spec:
+  host: >-
+    travel-recommendation-engine-hackathon2023-prometheus.mycluster-wdc04-b3c-16x64-bcd9381b2e59a32911540577d00720d7-0000.us-east.containers.appdomain.cloud
+  to:
+    kind: Service
+    name: travel-recommendation-engine
+    weight: 100
+  port:
+    targetPort: 10000-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        travel-recommendation-engine-hackathon2023-prometheus.mycluster-wdc04-b3c-16x64-bcd9381b2e59a32911540577d00720d7-0000.us-east.containers.appdomain.cloud
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2023-05-08T09:29:55Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: >-
+        router-default.mycluster-wdc04-b3c-16x64-bcd9381b2e59a32911540577d00720d7-0000.us-east.containers.appdomain.cloud

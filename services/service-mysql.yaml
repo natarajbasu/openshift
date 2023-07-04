@@ -1,0 +1,77 @@
+﻿kind: Service
+apiVersion: v1
+metadata:
+  name: mysql
+  namespace: hackathon2023-prometheus
+  uid: 4bf517b8-27da-47b4-a0c9-08fbbd3de363
+  resourceVersion: '153369089'
+  creationTimestamp: '2023-05-16T04:37:55Z'
+  labels:
+    app: mysql
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/name: mysql
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  managedFields:
+    - manager: oc
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-16T04:37:55Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+        'f:spec':
+          'f:internalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":3306,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector': {}
+          'f:sessionAffinity': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-29T08:45:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            'k:{"port":3306,"protocol":"TCP"}':
+              'f:nodePort': {}
+          'f:type': {}
+spec:
+  clusterIP: 172.21.255.31
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 3306-tcp
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+      nodePort: 32350
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.21.255.31
+  type: NodePort
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    deploymentconfig: mysql
+status:
+  loadBalancer: {}

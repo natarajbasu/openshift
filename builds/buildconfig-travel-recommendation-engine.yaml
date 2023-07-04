@@ -1,0 +1,123 @@
+﻿kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    app.openshift.io/connects-to: '[{"apiVersion":"apps/v1","kind":"Deployment","name":"mysql"}]'
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/shantanu-ghosh/travel-recommendation.git'
+    openshift.io/generated-by: OpenShiftWebConsole
+  resourceVersion: '171735501'
+  name: travel-recommendation-engine
+  uid: fb120aa4-e1fd-45a9-9380-2b2b4c4c715a
+  creationTimestamp: '2023-05-08T09:29:52Z'
+  generation: 12
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2023-05-08T09:29:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:imageChangeTriggers': {}
+          'f:lastVersion': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2023-05-08T09:52:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:app.openshift.io/connects-to': {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:output':
+            'f:to': {}
+          'f:runPolicy': {}
+          'f:source':
+            'f:contextDir': {}
+            'f:git':
+              .: {}
+              'f:uri': {}
+            'f:sourceSecret': {}
+            'f:type': {}
+          'f:strategy':
+            'f:sourceStrategy':
+              .: {}
+              'f:env': {}
+              'f:from': {}
+            'f:type': {}
+          'f:triggers': {}
+  namespace: hackathon2023-prometheus
+  labels:
+    app: travel-recommendation-engine
+    app.kubernetes.io/component: travel-recommendation-engine
+    app.kubernetes.io/instance: travel-recommendation-engine
+    app.kubernetes.io/name: travel-recommendation-engine
+    app.kubernetes.io/part-of: travel-recommendation
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.9-ubi8
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'travel-recommendation-engine:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'python:3.9-ubi8'
+      env:
+        - name: APP_FILE
+          value: src/app.py
+        - name: PYTHONPATH
+          value: src
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/shantanu-ghosh/travel-recommendation.git'
+    contextDir: /
+    sourceSecret:
+      name: shantanu-github
+  triggers:
+    - type: Generic
+      generic:
+        secretReference:
+          name: travel-recommendation-engine-generic-webhook-secret
+    - type: GitHub
+      github:
+        secretReference:
+          name: travel-recommendation-engine-github-webhook-secret
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  runPolicy: Serial
+status:
+  lastVersion: 8
+  imageChangeTriggers:
+    - lastTriggeredImageID: >-
+        image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:baa27cb50812e33337d088742697b4249af05e4520255b379ba07982d894f7a6
+      from:
+        namespace: openshift
+        name: 'python:3.9-ubi8'
+      lastTriggerTime: null

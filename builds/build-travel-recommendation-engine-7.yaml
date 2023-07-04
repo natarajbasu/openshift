@@ -1,0 +1,209 @@
+﻿kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/build-config.name: travel-recommendation-engine
+    openshift.io/build.number: '7'
+    openshift.io/build.pod-name: travel-recommendation-engine-7-build
+  resourceVersion: '157512488'
+  name: travel-recommendation-engine-7
+  uid: ba10811a-ec0f-46f0-a02c-b7edbf55b0eb
+  creationTimestamp: '2023-05-31T19:27:13Z'
+  generation: 2
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2023-05-31T19:27:13Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/build-config.name': {}
+            'f:openshift.io/build.number': {}
+          'f:labels':
+            'f:app.openshift.io/runtime': {}
+            'f:app': {}
+            'f:app.kubernetes.io/name': {}
+            .: {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime-version': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:openshift.io/build-config.name': {}
+            'f:app.kubernetes.io/component': {}
+            'f:buildconfig': {}
+            'f:openshift.io/build.start-policy': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"fb120aa4-e1fd-45a9-9380-2b2b4c4c715a"}': {}
+        'f:spec':
+          'f:output':
+            'f:to': {}
+          'f:serviceAccount': {}
+          'f:source':
+            'f:contextDir': {}
+            'f:git':
+              .: {}
+              'f:uri': {}
+            'f:sourceSecret': {}
+            'f:type': {}
+          'f:strategy':
+            'f:sourceStrategy':
+              .: {}
+              'f:env': {}
+              'f:from': {}
+              'f:pullSecret': {}
+            'f:type': {}
+          'f:triggeredBy': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"New"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:config': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2023-05-31T19:31:12Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:openshift.io/build.pod-name': {}
+        'f:spec':
+          'f:output':
+            'f:pushSecret': {}
+        'f:status':
+          'f:completionTimestamp': {}
+          'f:duration': {}
+          'f:outputDockerImageReference': {}
+          'f:phase': {}
+          'f:startTimestamp': {}
+  namespace: hackathon2023-prometheus
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      kind: BuildConfig
+      name: travel-recommendation-engine
+      uid: fb120aa4-e1fd-45a9-9380-2b2b4c4c715a
+      controller: true
+  labels:
+    app: travel-recommendation-engine
+    app.kubernetes.io/part-of: travel-recommendation
+    app.kubernetes.io/instance: travel-recommendation-engine
+    openshift.io/build-config.name: travel-recommendation-engine
+    app.kubernetes.io/component: travel-recommendation-engine
+    openshift.io/build.start-policy: Serial
+    buildconfig: travel-recommendation-engine
+    app.openshift.io/runtime: python
+    app.kubernetes.io/name: travel-recommendation-engine
+    app.openshift.io/runtime-version: 3.9-ubi8
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'travel-recommendation-engine:latest'
+    pushSecret:
+      name: builder-dockercfg-52p45
+  resources: {}
+  triggeredBy:
+    - message: Manually triggered
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:baa27cb50812e33337d088742697b4249af05e4520255b379ba07982d894f7a6
+      pullSecret:
+        name: builder-dockercfg-52p45
+      env:
+        - name: APP_FILE
+          value: src/app.py
+        - name: PYTHONPATH
+          value: src
+  postCommit: {}
+  serviceAccount: builder
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/shantanu-ghosh/travel-recommendation.git'
+    contextDir: /
+    sourceSecret:
+      name: shantanu-github
+  revision:
+    type: Git
+    git:
+      commit: 53306e6aa2bad4affd05237c75adbecea521c930
+      author:
+        name: sumandawn
+        email: sumandawn@users.noreply.github.com
+      committer:
+        name: GitHub
+        email: noreply@github.com
+      message: 'Merge pull request #4 from shantanu-ghosh/suman'
+status:
+  output:
+    to:
+      imageDigest: 'sha256:41144d92bf4bf58088471261dfa5e159e7e0195ef2f637e20f8812a44d1c31e4'
+  config:
+    kind: BuildConfig
+    namespace: hackathon2023-prometheus
+    name: travel-recommendation-engine
+  outputDockerImageReference: >-
+    image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine:latest
+  duration: 239000000000
+  startTimestamp: '2023-05-31T19:27:13Z'
+  stages:
+    - name: FetchInputs
+      startTime: '2023-05-31T19:27:15Z'
+      durationMilliseconds: 391
+      steps:
+        - name: FetchGitSource
+          startTime: '2023-05-31T19:27:15Z'
+          durationMilliseconds: 391
+    - name: PullImages
+      startTime: '2023-05-31T19:27:18Z'
+      durationMilliseconds: 99796
+      steps:
+        - name: PullBaseImage
+          startTime: '2023-05-31T19:27:18Z'
+          durationMilliseconds: 99796
+    - name: Build
+      startTime: '2023-05-31T19:28:58Z'
+      durationMilliseconds: 107584
+      steps:
+        - name: DockerBuild
+          startTime: '2023-05-31T19:28:58Z'
+          durationMilliseconds: 107584
+    - name: PushImage
+      startTime: '2023-05-31T19:30:45Z'
+      durationMilliseconds: 23024
+      steps:
+        - name: PushImage
+          startTime: '2023-05-31T19:30:45Z'
+          durationMilliseconds: 23024
+  conditions:
+    - type: New
+      status: 'False'
+      lastUpdateTime: '2023-05-31T19:27:14Z'
+      lastTransitionTime: '2023-05-31T19:27:14Z'
+    - type: Pending
+      status: 'False'
+      lastUpdateTime: '2023-05-31T19:27:16Z'
+      lastTransitionTime: '2023-05-31T19:27:16Z'
+    - type: Running
+      status: 'False'
+      lastUpdateTime: '2023-05-31T19:31:12Z'
+      lastTransitionTime: '2023-05-31T19:31:12Z'
+    - type: Complete
+      status: 'True'
+      lastUpdateTime: '2023-05-31T19:31:12Z'
+      lastTransitionTime: '2023-05-31T19:31:12Z'
+  completionTimestamp: '2023-05-31T19:31:12Z'
+  phase: Complete

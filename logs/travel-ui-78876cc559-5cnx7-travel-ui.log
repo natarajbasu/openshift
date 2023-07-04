@@ -1,0 +1,43 @@
+Environment: 
+	DEV_MODE=false
+	NODE_ENV=production
+	DEBUG_PORT=5858
+Launching via npm...
+npm info using npm@8.19.2
+npm info using node@v16.18.1
+npm timing npm:load:whichnode Completed in 0ms
+npm timing config:load:defaults Completed in 13ms
+npm timing config:load:file:/usr/lib/node_modules/npm/npmrc Completed in 76ms
+npm timing config:load:builtin Completed in 77ms
+npm timing config:load:cli Completed in 7ms
+npm timing config:load:env Completed in 1ms
+npm timing config:load:project Completed in 4ms
+npm timing config:load:file:/opt/app-root/src/.npmrc Completed in 0ms
+npm timing config:load:user Completed in 1ms
+npm timing config:load:file:/opt/app-root/src/.npm-global/etc/npmrc Completed in 0ms
+npm timing config:load:global Completed in 1ms
+npm timing config:load:validate Completed in 1ms
+npm timing config:load:credentials Completed in 2ms
+npm timing config:load:setEnvs Completed in 2ms
+npm timing config:load Completed in 110ms
+npm timing npm:load:configload Completed in 110ms
+npm timing npm:load:mkdirpcache Completed in 4ms
+npm timing npm:load:mkdirplogs Completed in 2ms
+npm timing npm:load:setTitle Completed in 2ms
+npm timing config:load:flatten Completed in 5ms
+npm timing npm:load:display Completed in 9ms
+npm timing npm:load:logFile Completed in 6ms
+npm timing npm:load:timers Completed in 0ms
+npm timing npm:load:configScope Completed in 0ms
+npm timing npm:load Completed in 135ms
+
+> hackathonapp@16.0.0 start
+> node server.js
+
+npm http fetch GET 200 https://registry.npmjs.org/npm 699ms (cache miss)
+Warning: connect.session() MemoryStore is not
+designed for a production environment, as it will leak
+memory, and will not scale past a single process.
+Running at Port 8000
+Server running on port: 8000
+abc123 :::: e99a18c428cb38d5f260853678922e03

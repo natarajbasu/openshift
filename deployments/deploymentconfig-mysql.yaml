@@ -1,0 +1,109 @@
+﻿kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: mysql
+  namespace: hackathon2023-prometheus
+  uid: 6fd1a944-eb12-4083-bab3-170741cac62f
+  resourceVersion: '163448919'
+  generation: 50
+  creationTimestamp: '2023-05-30T02:26:32Z'
+  labels:
+    app: mysql
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/part-of: travel-recommendation
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - mysql
+        from:
+          kind: ImageStreamTag
+          namespace: hackathon2023-prometheus
+          name: 'mysql:latest'
+        lastTriggeredImage: >-
+          image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/mysql@sha256:5da2890ce2438238db41f1d5e728188300736aad157e5c370b62d93bab61b7da
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    deploymentconfig: mysql
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        deploymentconfig: mysql
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+    spec:
+      volumes:
+        - name: mysql-claim
+          persistentVolumeClaim:
+            claimName: mysql-claim-clone
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: mysql
+          env:
+            - name: MYSQL_DATABASE
+              value: testdb
+            - name: MYSQL_OPERATIONS_USER
+              value: opuser8
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: mysql-claim
+              mountPath: /var/lib/mysql
+          terminationMessagePolicy: File
+          envFrom:
+            - secretRef:
+                name: mysql-secrets
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/mysql@sha256:5da2890ce2438238db41f1d5e728188300736aad157e5c370b62d93bab61b7da
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+status:
+  observedGeneration: 50
+  details:
+    message: config change
+    causes:
+      - type: ConfigChange
+  availableReplicas: 1
+  unavailableReplicas: 0
+  latestVersion: 19
+  updatedReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2023-05-30T13:52:02Z'
+      lastTransitionTime: '2023-05-30T13:52:02Z'
+      reason: NewReplicationControllerAvailable
+      message: replication controller "mysql-19" successfully rolled out
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2023-06-04T11:30:13Z'
+      lastTransitionTime: '2023-06-04T11:30:13Z'
+      message: Deployment config has minimum availability.
+  replicas: 1
+  readyReplicas: 1

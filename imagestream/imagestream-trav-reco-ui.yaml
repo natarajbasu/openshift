@@ -1,0 +1,36 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: trav-reco-ui
+  namespace: hackathon2023-prometheus
+  uid: 84c66c64-01de-45a1-ada9-f674b850a1fd
+  resourceVersion: '172748993'
+  generation: 1
+  creationTimestamp: '2023-05-23T09:49:32Z'
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/trav-reco-ui
+  tags:
+    - tag: latest
+      items:
+        - created: '2023-06-09T15:11:28Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/trav-reco-ui@sha256:aa99dca83a26d183e3e0127244d52c81a5eec60ad085909f81e75540b076487e
+          image: >-
+            sha256:aa99dca83a26d183e3e0127244d52c81a5eec60ad085909f81e75540b076487e
+          generation: 1
+        - created: '2023-06-09T05:29:51Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/trav-reco-ui@sha256:771c6153771583e892e307354fbe804bc1a9d9d889486c2f7c8535e86dda1ed7
+          image: >-
+            sha256:771c6153771583e892e307354fbe804bc1a9d9d889486c2f7c8535e86dda1ed7
+          generation: 1
+        - created: '2023-06-08T17:12:12Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/trav-reco-ui@sha256:a323fe5b4c9e9bfab34099e017ad8ade84497049819c134a26da64e14c42c6b3
+          image: >-
+            sha256:a323fe5b4c9e9bfab34099e017ad8ade84497049819c134a26da64e14c42c6b3
+          generation: 1

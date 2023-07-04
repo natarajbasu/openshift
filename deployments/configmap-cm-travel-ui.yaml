@@ -1,0 +1,25 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cm-travel-ui
+  namespace: hackathon2023-prometheus
+  uid: cc1ba9fa-1f6c-4bdc-827f-ee7dc9f926e1
+  resourceVersion: '155177569'
+  creationTimestamp: '2023-05-30T10:08:53Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T10:08:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:MYSQL_HOST': {}
+          'f:MYSQL_PORT': {}
+        'f:immutable': {}
+immutable: false
+data:
+  MYSQL_HOST: >-
+    mysql-hackathon2023-prometheus.mycluster-wdc04-b3c-16x64-bcd9381b2e59a32911540577d00720d7-0000.us-east.containers.appdomain.cloud
+  MYSQL_PORT: '32350'

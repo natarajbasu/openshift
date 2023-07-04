@@ -1,0 +1,99 @@
+﻿kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+    ibm.io/provisioning-status: complete
+    pv.kubernetes.io/bind-completed: 'yes'
+    pv.kubernetes.io/bound-by-controller: 'yes'
+    volume.beta.kubernetes.io/storage-provisioner: ibm.io/ibmc-block
+    volume.kubernetes.io/storage-provisioner: ibm.io/ibmc-block
+  resourceVersion: '154640974'
+  name: mysql-claim-clone
+  uid: 3b16d5c8-fd8e-4d2e-a74f-decad2528673
+  creationTimestamp: '2023-05-30T02:40:02Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T02:40:02Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:accessModes': {}
+          'f:dataSource': {}
+          'f:resources':
+            'f:requests':
+              .: {}
+              'f:storage': {}
+          'f:storageClassName': {}
+          'f:volumeMode': {}
+    - manager: provisioner
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T02:40:03Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:ibm.io/provisioning-status': {}
+          'f:labels':
+            .: {}
+            'f:region': {}
+            'f:zone': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T02:40:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:pv.kubernetes.io/bind-completed': {}
+            'f:pv.kubernetes.io/bound-by-controller': {}
+            'f:volume.beta.kubernetes.io/storage-provisioner': {}
+            'f:volume.kubernetes.io/storage-provisioner': {}
+        'f:spec':
+          'f:volumeName': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T02:40:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:accessModes': {}
+          'f:capacity':
+            .: {}
+            'f:storage': {}
+          'f:phase': {}
+      subresource: status
+  namespace: hackathon2023-prometheus
+  finalizers:
+    - kubernetes.io/pvc-protection
+  labels:
+    region: us-east
+    zone: wdc04
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: pvc-3b16d5c8-fd8e-4d2e-a74f-decad2528673
+  storageClassName: ibmc-block-gold
+  volumeMode: Filesystem
+  dataSource:
+    apiGroup: ''
+    kind: PersistentVolumeClaim
+    name: mysql-claim
+  dataSourceRef:
+    apiGroup: ''
+    kind: PersistentVolumeClaim
+    name: mysql-claim
+status:
+  phase: Bound
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 20Gi

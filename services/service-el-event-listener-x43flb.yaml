@@ -1,0 +1,79 @@
+﻿kind: Service
+apiVersion: v1
+metadata:
+  name: el-event-listener-x43flb
+  namespace: hackathon2023-prometheus
+  uid: 60a4648d-a0d1-4d90-9d46-e0b9895532ba
+  resourceVersion: '135356986'
+  creationTimestamp: '2023-05-19T09:47:00Z'
+  labels:
+    app.kubernetes.io/managed-by: EventListener
+    app.kubernetes.io/part-of: Triggers
+    eventlistener: event-listener-x43flb
+  ownerReferences:
+    - apiVersion: triggers.tekton.dev/v1beta1
+      kind: EventListener
+      name: event-listener-x43flb
+      uid: 71574f85-cbf6-4056-bf85-0e46db45ea62
+      controller: true
+      blockOwnerDeletion: true
+  managedFields:
+    - manager: openshift-pipelines-triggers-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-19T09:47:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/managed-by': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:eventlistener': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"71574f85-cbf6-4056-bf85-0e46db45ea62"}': {}
+        'f:spec':
+          'f:internalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8080,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":9000,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  clusterIP: 172.21.226.41
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: http-listener
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: http-metrics
+      protocol: TCP
+      port: 9000
+      targetPort: 9000
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.21.226.41
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app.kubernetes.io/managed-by: EventListener
+    app.kubernetes.io/part-of: Triggers
+    eventlistener: event-listener-x43flb
+status:
+  loadBalancer: {}

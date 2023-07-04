@@ -1,0 +1,88 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/shantanu-ghosh/travel-recommendation.git'
+    openshift.io/generated-by: OpenShiftWebConsole
+  resourceVersion: '157512409'
+  name: travel-recommendation-engine
+  uid: 0c540eb4-13ed-4376-9c27-abe7a9e90eb4
+  creationTimestamp: '2023-05-08T09:29:52Z'
+  generation: 1
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: image.openshift.io/v1
+      time: '2023-05-08T09:29:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+  namespace: hackathon2023-prometheus
+  labels:
+    app: travel-recommendation-engine
+    app.kubernetes.io/component: travel-recommendation-engine
+    app.kubernetes.io/instance: travel-recommendation-engine
+    app.kubernetes.io/name: travel-recommendation-engine
+    app.kubernetes.io/part-of: travel-recommendation
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.9-ubi8
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine
+  tags:
+    - tag: latest
+      items:
+        - created: '2023-05-31T19:31:08Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine@sha256:41144d92bf4bf58088471261dfa5e159e7e0195ef2f637e20f8812a44d1c31e4
+          image: >-
+            sha256:41144d92bf4bf58088471261dfa5e159e7e0195ef2f637e20f8812a44d1c31e4
+          generation: 1
+        - created: '2023-05-26T07:17:27Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine@sha256:cea61f47ac5490383dad2a7771259996eff42b4da05ce9e0be6fa677a986d309
+          image: >-
+            sha256:cea61f47ac5490383dad2a7771259996eff42b4da05ce9e0be6fa677a986d309
+          generation: 1
+        - created: '2023-05-13T21:14:32Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine@sha256:7a25c653cf62d6818647e5fb9c62be4aa457250350eb9eeac22138b3b8b65a26
+          image: >-
+            sha256:7a25c653cf62d6818647e5fb9c62be4aa457250350eb9eeac22138b3b8b65a26
+          generation: 1
+        - created: '2023-05-13T19:54:51Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine@sha256:be8eb52ea4eef6d8e6686fb63dce267fc8cd62c5a1036304de7547afc3499e5a
+          image: >-
+            sha256:be8eb52ea4eef6d8e6686fb63dce267fc8cd62c5a1036304de7547afc3499e5a
+          generation: 1
+        - created: '2023-05-08T10:10:38Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine@sha256:14312d09c0cc9572966ca21455c655efb43af3ad7fa4a02dd5fac74bc8598d5b
+          image: >-
+            sha256:14312d09c0cc9572966ca21455c655efb43af3ad7fa4a02dd5fac74bc8598d5b
+          generation: 1
+        - created: '2023-05-08T09:45:55Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/hackathon2023-prometheus/travel-recommendation-engine@sha256:0c5b387180f2c21fe962b523ef298b1d817e6fa9e70b92be006cbf83974b7a4c
+          image: >-
+            sha256:0c5b387180f2c21fe962b523ef298b1d817e6fa9e70b92be006cbf83974b7a4c
+          generation: 1

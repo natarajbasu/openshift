@@ -1,0 +1,55 @@
+
+C:\Users\05237J744\oc>oc new-app --as-deployment-config -i mysql -e MYSQL_USER=tester -e MYSQL_PASSWORD=Pass1234 -e MYSQL_DATABASE=testdb -e MYSQL_OPERATIONS_USER=opuser -e MYSQL_OPERATIONS_PASSWORD=oppass
+
+Add volumes in deployment-config.yaml following in template->spec
+    spec:
+      volumes:
+        - name: mysql-volume1
+          persistentVolumeClaim:
+            claimName: mysql-claim
+
+Add volumes in deployment-config.yaml following in template->spec->containers->resources
+          volumeMounts:
+            - name: mysql-volume1
+              mountPath: /var/lib/mysql
+
+part of YAML After reloading:
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: mysql
+          env:
+            - name: MYSQL_DATABASE
+              value: testdb
+            - name: MYSQL_PASSWORD
+              value: Pass12345
+            - name: MYSQL_USER
+              value: tester
+            - name: MYSQL_OPERATIONS_USER
+              value: opus
+            - name: MYSQL_OPERATIONS_PASSWORD
+              value: oppa
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: mysql-volume1
+              mountPath: /var/lib/mysql
+
+
+To expose the service, update the services yaml as below
+1. Add in spec->ports
+      nodePort: <30089> <or any other free port of your choice>
+to get something like below
+  ports:
+    - name: 3306-tcp
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+      nodePort: 30089
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.21.255.31
+2. Update type in spec to NodePort from ClusterIP
+  type: NodePort

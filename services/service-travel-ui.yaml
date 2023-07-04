@@ -1,0 +1,62 @@
+﻿kind: Service
+apiVersion: v1
+metadata:
+  name: travel-ui
+  namespace: hackathon2023-prometheus
+  uid: 7aaffb09-cf9c-4562-bfb5-8523af494f63
+  resourceVersion: '154779797'
+  creationTimestamp: '2023-05-23T13:29:34Z'
+  labels:
+    app: travel-ui-service
+  managedFields:
+    - manager: kubectl-expose
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-23T13:29:34Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels': {}
+        'f:spec':
+          'f:externalTrafficPolicy': {}
+          'f:internalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8000,"protocol":"TCP"}':
+              .: {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2023-05-30T04:38:58Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:app': {}
+        'f:spec':
+          'f:selector': {}
+spec:
+  clusterIP: 172.21.213.179
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 31278
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.21.213.179
+  type: NodePort
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: travel-ui
+status:
+  loadBalancer: {}

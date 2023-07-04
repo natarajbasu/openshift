@@ -1,0 +1,79 @@
+﻿kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: hackathon2023-prometheus
+  uid: b67e4cff-c818-44b1-8e76-f28b3cf9b4f0
+  resourceVersion: '73493305'
+  creationTimestamp: '2023-04-13T08:09:19Z'
+  labels:
+    kubernetes.io/metadata.name: hackathon2023-prometheus
+    openshift-pipelines.tekton.dev/namespace-reconcile-version: 1.9.2
+    pod-security.kubernetes.io/audit: baseline
+    pod-security.kubernetes.io/audit-version: v1.24
+    pod-security.kubernetes.io/warn: baseline
+    pod-security.kubernetes.io/warn-version: v1.24
+  annotations:
+    openshift.io/description: ''
+    openshift.io/display-name: ''
+    openshift.io/requester: 'IAM#gaurav.aiuverse@ibm.com'
+    openshift.io/sa.scc.mcs: 's0:c31,c5'
+    openshift.io/sa.scc.supplemental-groups: 1000940000/10000
+    openshift.io/sa.scc.uid-range: 1000940000/10000
+    operator.tekton.dev/prune.hash: e12cf88878007ab90299fa28c92d42daf72a1dda6ff604ea40c1f1da0f1f5e1d
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-13T08:09:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/description': {}
+            'f:openshift.io/display-name': {}
+            'f:openshift.io/requester': {}
+          'f:labels':
+            .: {}
+            'f:kubernetes.io/metadata.name': {}
+    - manager: cluster-policy-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-13T08:09:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:openshift.io/sa.scc.mcs': {}
+            'f:openshift.io/sa.scc.supplemental-groups': {}
+            'f:openshift.io/sa.scc.uid-range': {}
+          'f:labels':
+            'f:pod-security.kubernetes.io/audit': {}
+            'f:pod-security.kubernetes.io/audit-version': {}
+            'f:pod-security.kubernetes.io/warn': {}
+            'f:pod-security.kubernetes.io/warn-version': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-13T08:09:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:finalizers': {}
+      subresource: finalize
+    - manager: openshift-pipelines-operator
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-13T08:09:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:operator.tekton.dev/prune.hash': {}
+          'f:labels':
+            'f:openshift-pipelines.tekton.dev/namespace-reconcile-version': {}
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active
